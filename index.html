@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>CÓDIGO DOS MAPAS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#0b0f1a;
+  --card:#141a2e;
+  --accent:#7dd3fc;
+  --soft:#94a3b8;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:var(--bg);color:#fff;}
+
+header{
+  position:sticky;
+  top:0;
+  background:#0b0f1a;
+  padding:12px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #1f2937;
+}
+
+header h1{color:var(--accent);font-size:15px;}
+
+nav a{
+  margin-left:16px;
+  text-decoration:none;
+  color:var(--soft);
+  font-size:14px;
+  text-transform: uppercase;
+}
+
+nav a.active{
+  color:var(--accent);
+  border-bottom:2px solid var(--accent);
+  padding-bottom:3px;
+}
+
+.container{padding:16px;}
+
+.mapa{
+  position:relative;
+  background:var(--card);
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:14px;
+}
+
+.destaque{
+  border:1px solid var(--accent);
+}
+
+/* Container do selo e da data */
+.selo-container{
+  display:flex;
+  align-items:center;
+  margin-bottom:6px;
+}
+
+/* 🔧 ALTERAÇÃO PEDIDA */
+.selo{
+  font-size:11px;
+  color:#fff;
+  background:#000;
+  padding:3px 8px;
+  border-radius:6px;
+  display:inline-block;
+}
+
+/* Data com fundo preto */
+.data-criacao{
+  font-size:11px;
+  color:#fff;
+  background:#000;
+  padding:3px 8px;
+  border-radius:6px;
+  margin-left:12px;
+  display:inline-block;
+}
+
+.sub{
+  font-size:12px;
+  color:var(--soft);
+  margin-bottom:8px;
+}
+
+.stats{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  margin-bottom:6px;
+  color:#cbd5e1;
+}
+
+.btn{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.btn-copy{
+  background:#000;
+  color:#fff;
+}
+
+.btn-info{
+  margin-top:6px;
+  background:#1f2937;
+  color:#fff;
+}
+
+.redes{
+  display:none;
+  text-align:center;
+  margin-top:10px;
+}
+
+.redes a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin:8px auto;
+  padding:12px;
+  width:90%;
+  border-radius:10px;
+  background:#1f2937;
+  color:#fff;
+  text-decoration:none;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  background:#141a2e;
+  padding:18px;
+  border-radius:14px;
+  width:90%;
+  max-width:420px;
+  animation: abrirModal 0.3s ease forwards;
+}
+
+.modal-content h3{
+  margin-bottom:8px;
+  font-size:16px;
+}
+
+.modal-content ul{
+  font-size:13px;
+  color:#cbd5e1;
+}
+
+.modal-content li{
+  margin-bottom:6px;
+}
+
+@keyframes abrirModal{
+  0%{transform:scale(0.8);opacity:0;}
+  100%{transform:scale(1);opacity:1;}
+}
+
+@keyframes fecharModal{
+  0%{transform:scale(1);opacity:1;}
+  100%{transform:scale(0.8);opacity:0;}
+}
+
+audio{display:none;}
+
+.footer{
+  text-align:center;
+  padding:10px 10px;
+  color:var(--soft);
+  font-size:14px;
+}
+.footer span{
+  color:var(--accent);
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>CÓDIGO DOS MAPAS</h1>
+  <nav>
+    <a href="#" id="tabMapas" class="active" onclick="mostrar('mapas')">MAPAS</a>
+    <a href="#" id="tabRedes" onclick="mostrar('redes')">REDES SOCIAIS</a>
+  </nav>
+</header>
+
+<div class="container" id="mapas">
+
+  <div class="mapa destaque">
+    <div class="selo-container">
+      <span class="selo">🔥 MAIS JOGADO</span>
+      <span class="data-criacao">📅 Criado em 18/04/2024</span>
+    </div>
+    <h2>CONFRONTO 4X4</h2>
+    <p class="sub">Ideal para squads • Combate intenso</p>
+    <div class="stats">
+      <span>👥 +490.000 inscrições</span>
+      <span>❤️ +760.000 curtidas</span>
+    </div>
+    <div class="stats">
+      <span>🎮 +100.000 jogadores diariamente</span>
+    </div>
+    <button class="btn btn-copy" onclick="copiar(this,'#FREEFIRE8D61E9C78D2369027CE28FB442566BA38304')">Copiar código</button>
+    <button class="btn btn-info" onclick="abrirInfo()">Informações</button>
+  </div>
+
+  <div class="mapa">
+    <div class="selo-container">
+      <span class="selo">⭐ POPULAR</span>
+      <span class="data-criacao">📅 Criado em 15/05/2024</span>
+    </div>
+    <h2>CONFRONTO 2X2</h2>
+    <p class="sub">Duplas • Estratégia rápida</p>
+    <div class="stats">
+      <span>👥 +83.000 inscrições</span>
+      <span>❤️ +130.000 curtidas</span>
+    </div>
+    <div class="stats">
+      <span>🎮 +20.000 jogadores diariamente</span>
+    </div>
+    <button class="btn btn-copy" onclick="copiar(this,'#FREEFIREDBB16BB2D16950ADADCDD3DC3C5C531D8304')">Copiar código</button>
+    <button class="btn btn-info" onclick="abrirInfo()">Informações</button>
+  </div>
+
+  <div class="mapa">
+    <div class="selo-container">
+      <span class="selo">⭐ POPULAR</span>
+      <span class="data-criacao">📅 Criado em 12/12/2024</span>
+    </div>
+    <h2>CONFRONTO 1X1</h2>
+    <p class="sub">X1 • Habilidade pura</p>
+    <div class="stats">
+      <span>👥 +96.000 inscrições</span>
+      <span>❤️ +140.000 curtidas</span>
+    </div>
+    <div class="stats">
+      <span>🎮 +35.000 jogadores diariamente</span>
+    </div>
+    <button class="btn btn-copy" onclick="copiar(this,'#FREEFIRE96E89A45A61545EE43CD478F954E26928304')">Copiar código</button>
+    <button class="btn btn-info" onclick="abrirInfo()">Informações</button>
+  </div>
+
+</div>
+
+<div class="container redes" id="redes">
+  <a href="https://www.tiktok.com/@m_moreno_35" target="_blank">
+    <i class="fa-brands fa-tiktok"></i> Seguir no TikTok
+  </a>
+  <a href="https://www.instagram.com/m_moreno_35" target="_blank">
+    <i class="fa-brands fa-instagram"></i> Seguir no Instagram
+  </a>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content" id="modalContent">
+    <h3>INFORMAÇÕES DO MAPA</h3>
+    <ul>
+      <li>🛡️ Mapa aberto com muro ao redor</li>
+      <li>🧱 Proteção contra bugadores na parede</li>
+      <li>🎮 Mapa competitivo focado em habilidade</li>
+      <li>⚔️ Ideal para partidas equilibradas e treinos</li>
+      <li>❌ Não possui novo futuro</li>
+      <li>🚫 Sem habilidades apelonas</li>
+      <li>🧊 Limite de gel no chão: 2</li>
+      <li>🔫 Apenas armas de X1 disponíveis</li>
+      <li>💥 Munição infinita</li>
+      <li>🧰 Kit médico infinito</li>
+      <li>💉 Inalador infinito</li>
+      <li>🛠️ Kit de reparo infinito</li>
+      <li>🐞 Mapa quase sem bugs</li>
+      <li>🛡️ Algumas proteções contra hack (BETA)</li>
+      <li>👤 Mapa criado sozinho pelo Moreno</li>
+    </ul>
+    <button class="btn btn-info" onclick="fechar()">Fechar</button>
+  </div>
+</div>
+
+<div class="footer">
+  siga <span>@m_moreno_35</span>
+</div>
+
+<audio id="som">
+  <source src="https://assets.mixkit.co/sfx/preview/mixkit-soft-click-1124.mp3">
+</audio>
+
+<script>
+function copiar(btn,cod){
+  navigator.clipboard.writeText(cod);
+  btn.innerText="COPIADO ✔";
+  document.getElementById('som').play();
+  setTimeout(()=>btn.innerText="Copiar código",2500);
+}
+
+function mostrar(id){
+  const mapasEl = document.getElementById('mapas');
+  const redesEl = document.getElementById('redes');
+  const duration = 150;
+  const current = mapasEl.style.display !== "none" ? mapasEl : redesEl;
+  current.style.transition = `opacity ${duration}ms ease-in-out`;
+  current.style.opacity = 0;
+  setTimeout(()=>{
+    mapasEl.style.display="none";
+    redesEl.style.display="none";
+    const next = document.getElementById(id);
+    next.style.display="block";
+    next.style.opacity = 0;
+    next.style.transition = `opacity ${duration}ms ease-in-out`;
+    setTimeout(()=> next.style.opacity = 1,10);
+    tabMapas.classList.remove("active");
+    tabRedes.classList.remove("active");
+    (id==="mapas"?tabMapas:tabRedes).classList.add("active");
+  },duration);
+}
+
+function abrirInfo(){
+  const modal = document.getElementById('modal');
+  const modalContent = document.getElementById('modalContent');
+  modal.style.display="flex";
+  modalContent.style.animation = 'abrirModal 0.3s ease forwards';
+}
+
+function fechar(){
+  const modal = document.getElementById('modal');
+  const modalContent = document.getElementById('modalContent');
+  modalContent.style.animation = 'fecharModal 0.2s ease forwards';
+  setTimeout(()=>modal.style.display="none",200);
+}
+</script>
+
+</body>
+</html>
